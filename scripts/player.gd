@@ -22,6 +22,9 @@ var scaleY = 0.5
 var direction = Vector2(0, 1)
 var leftFacing = false
 var upFacing = false
+var anim = "Idle"
+
+onready var animNode = get_node("Anim")
 
 var attacking = false
 var can_attack = true
@@ -39,7 +42,6 @@ func take_damage(amnt=1):
 		if health <= 0:
 			state = STATE_DEAD
 			get_node("/root/Game").set_state(get_node("/root/Game/").STATE_LOSE)
-#			animNode.play("dead")
 #			
 #		
 		else:
@@ -76,6 +78,8 @@ func _ready():
 
 func _fixed_process(delta):
 	if state == STATE_PLAYING:
+		
+		var newAnim = "Idle"
 		
 		var moveUp = Input.is_action_pressed("ui_up")
 		var moveDown = Input.is_action_pressed("ui_down")
@@ -134,18 +138,18 @@ func _fixed_process(delta):
 				motion = normal.slide(motion)
 				motion = move(motion)
 		
-		#Facing direction
-		if leftFacing and velocity.x < 0:
-			set_scale(Vector2(-1, 1))
-		elif not leftFacing and velocity.x > 0:
-			set_scale(Vector2(1, 1))
+#		#Facing direction
+#		if leftFacing and velocity.x < 0:
+#			set_scale(Vector2(-1, 1))
+#		elif not leftFacing and velocity.x > 0:
+#			set_scale(Vector2(1, 1))
 		
 		#Rotation
 		if moving:
 			direction = moveDir
 			
-#			newAnim = "walk"
-#			animNode.set_speed(1.25)
+			newAnim = ""
+			animNode.set_speed(1.25)
 			
 			var ang = atan2(direction.x, direction.y)
 			if leftFacing and velocity.x < 0:
@@ -184,6 +188,25 @@ func _fixed_process(delta):
 		if is_hurt:
 			get_node("Player Sprite").set_modulate(Color(1,1,1, 0.5 + (0.5 * sin(OS.get_ticks_msec() / 10.0))))
 
+		#Animation
+#		if upFacing:
+#			newAnim = "Idle_Up"
+			
+		if moveUp:
+			newAnim = "Walk_Up"
+			
+		if moveDown:
+			newAnim = "Walk_Down"
+			
+		if moveLeft:
+			newAnim = "Walk_Left"
+			
+		if moveRight:
+			newAnim = "Walk_Right"
+		
+		if newAnim != anim:
+			anim = newAnim
+			animNode.play(anim)
 
 func _on_Attack_Cooldown_timeout():
 	can_attack = true
