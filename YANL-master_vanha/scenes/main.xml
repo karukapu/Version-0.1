@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="6" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
+	<ext_resource path="res://scenes/Tileset.xml" type="TileSet" index="0"></ext_resource>
 	<ext_resource path="res://scenes/Player.xml" type="PackedScene" index="1"></ext_resource>
 	<ext_resource path="res://scenes/Enemy.xml" type="PackedScene" index="2"></ext_resource>
-	<ext_resource path="res://scenes/Tileset.xml" type="TileSet" index="0"></ext_resource>
 	<resource type="GDScript" path="local://1">
 		<string name="script/source"> "&#000a;#extends Node&#000a;&#000a;#const STATE_PLAYING = 1&#000a;#const STATE_WIN = 2&#000a;#const STATE_LOSE = 4&#000a;&#000a;#var state = 1 setget set_state, get_state&#000a;&#000a;&#000a;#func set_state(st):&#000a;#&#0009;state = st&#000a;#&#0009;if state == STATE_WIN:&#000a;#&#0009;&#0009;get_node(&quot;Win Menu&quot;).show()&#000a;#&#0009;&#0009;get_node(&quot;Level/Objects/Player&quot;).state = 4 #Win State&#000a;#&#0009;&#000a;#&#0009;elif state == STATE_LOSE:&#000a;#&#0009;&#0009;get_node(&quot;Lose Menu&quot;).show()&#000a;&#000a;&#000a;#func get_state():&#000a;#&#0009;return state&#000a;&#000a;&#000a;#func _ready():&#000a;#&#0009;set_process_input(true)&#000a;#&#0009;get_node(&quot;/root/global&quot;).set_keys(0)&#000a;#&#0009;randomize()&#000a;&#000a;&#000a;#func _input(event):&#000a;#&#0009;if event.is_action_pressed(&quot;ui_cancel&quot;):&#000a;#&#0009;&#0009;get_node(&quot;Pause Menu&quot;).show()&#000a;&#000a;&#000a;" </string>
 

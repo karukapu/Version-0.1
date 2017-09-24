@@ -79,7 +79,7 @@ func _ready():
 func _fixed_process(delta):
 	if state == STATE_PLAYING:
 		
-		var newAnim = "Idle"
+		var newAnim = ""
 		
 		var moveUp = Input.is_action_pressed("ui_up")
 		var moveDown = Input.is_action_pressed("ui_down")
@@ -199,9 +199,19 @@ func _fixed_process(delta):
 			get_node("Player Sprite").set_modulate(Color(1,1,1, 0.5 + (0.5 * sin(OS.get_ticks_msec() / 10.0))))
 
 		#Animation
-#		if upFacing:
-#			newAnim = "Idle_Up"
+		if upFacing:	
+			newAnim = "Idle_Up"
 			
+		if not upFacing:
+			newAnim = "Idle_Down"
+			
+		if leftFacing:
+			newAnim = "Idle_Left"
+		
+		if not leftFacing:
+			newAnim = "Idle_Right"
+		
+		
 		if moveUp:
 			newAnim = "Walk_Up"
 			
