@@ -20,8 +20,12 @@ var top = 122
 var scaleY = 0.5
 
 var direction = Vector2(0, 1)
-var leftFacing = false
-var upFacing = false
+const FACING_UP = 1
+const FACING_RIGHT = 2
+const FACING_DOWN = 3
+const FACING_LEFT = 4
+var facing = FACING_DOWN
+
 var anim = "Idle"
 
 onready var animNode = get_node("Anim")
@@ -79,6 +83,7 @@ func _ready():
 func _fixed_process(delta):
 	if state == STATE_PLAYING:
 		
+		
 		var newAnim = ""
 		
 		var moveUp = Input.is_action_pressed("ui_up")
@@ -93,13 +98,13 @@ func _fixed_process(delta):
 		
 		#Movement X
 		if moveLeft:
-			leftFacing = true
+			facing = FACING_LEFT
 			if movement.x > 0:
 				movement.x -= dec
 			elif movement.x > -top:
 				movement.x -= acc
 		elif moveRight:
-			leftFacing = false
+			facing = FACING_RIGHT
 			if movement.x < 0:
 				movement.x += dec
 			elif movement.x < top:
@@ -109,13 +114,13 @@ func _fixed_process(delta):
 		
 		#Movement Y
 		if moveUp:
-			upFacing = true
+			facing = FACING_UP
 			if movement.y > 0:
 				movement.y -= dec
 			elif movement.y > -top:
 				movement.y -= acc
 		elif moveDown:
-			upFacing = false
+			facing = FACING_DOWN
 			if movement.y < 0:
 				movement.y += dec
 			elif movement.y < top:
@@ -152,7 +157,7 @@ func _fixed_process(delta):
 			animNode.set_speed(1.25)
 			
 			var ang = atan2(direction.x, direction.y)
-			if leftFacing and velocity.x < 0:
+			if facing == FACING_LEFT and velocity.x < 0:
 				ang = atan2(direction.y, direction.x) - deg2rad(90)
 			
 #			get_node("GroundOffset/Arrow").set_rot(ang)
@@ -199,16 +204,22 @@ func _fixed_process(delta):
 			get_node("Player Sprite").set_modulate(Color(1,1,1, 0.5 + (0.5 * sin(OS.get_ticks_msec() / 10.0))))
 
 		#Animation
-		if upFacing:	
+		print("facing: " + facing)
+		
+		if facing == FACING_UP:
+			print("Ylos")
 			newAnim = "Idle_Up"
 			
-		if not upFacing:
+		if facing == FACING_DOWN:
+			print("Alas")
 			newAnim = "Idle_Down"
 			
-		if leftFacing:
+		if facing == FACING_LEFT:
+			print("Vasen")
 			newAnim = "Idle_Left"
 		
-		if not leftFacing:
+		if facing == FACING_RIGHT:
+			print("Oikee")
 			newAnim = "Idle_Right"
 		
 		

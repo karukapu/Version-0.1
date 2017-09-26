@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="26" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
-	<ext_resource path="res://sprites/RPG Sprites/spr_player_up_strip6.png" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_up_strip6.png" type="Texture" index="8"></ext_resource>
 	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_down_strip7.png" type="Texture" index="2"></ext_resource>
-	<ext_resource path="res://sprites/RPG Sprites/spr_player_right_strip6.png" type="Texture" index="8"></ext_resource>
-	<ext_resource path="res://sprites/RPG Sprites/spr_player_down_strip6.png" type="Texture" index="6"></ext_resource>
 	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_right_strip7.png" type="Texture" index="4"></ext_resource>
-	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_up_strip7.png" type="Texture" index="5"></ext_resource>
-	<ext_resource path="res://sprites/RPG Sprites/spr_player_left_strip6.png" type="Texture" index="7"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_right_strip6.png" type="Texture" index="7"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_down_strip6.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_left_strip6.png" type="Texture" index="1"></ext_resource>
 	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_left_strip7.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_up_strip7.png" type="Texture" index="5"></ext_resource>
 	<ext_resource path="res://scripts/player.gd" type="Script" index="0"></ext_resource>
 	<resource type="CircleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
@@ -414,7 +414,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="7">  </resource>
+				<resource  external="1">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
@@ -469,7 +469,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="8">  </resource>
+				<resource  external="7">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
@@ -524,7 +524,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="1">  </resource>
+				<resource  external="8">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
@@ -644,7 +644,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="7">  </resource>
+				<resource  external="1">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
@@ -704,7 +704,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="8">  </resource>
+				<resource  external="7">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
@@ -764,7 +764,7 @@
 			<int> 1 </int>
 			<string> "values" </string>
 			<array  len="1" shared="false">
-				<resource  external="1">  </resource>
+				<resource  external="8">  </resource>
 			</array>
 		</dictionary>
 		<string name="tracks/2/type"> "value" </string>
