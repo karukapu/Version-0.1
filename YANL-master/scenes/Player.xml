@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="26" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_up_strip6.png" type="Texture" index="8"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_down_strip7.png" type="Texture" index="2"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_right_strip7.png" type="Texture" index="4"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_right_strip6.png" type="Texture" index="7"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_down_strip6.png" type="Texture" index="6"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_left_strip6.png" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_left_strip7.png" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://sprites/RPG Sprites/spr_player_attack_up_strip7.png" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://scripts/player.gd" type="Script" index="0"></ext_resource>
+	<resource type="CircleShape2D" path="local://1">
+		<real name="custom_solver_bias"> 0 </real>
+		<real name="radius"> 10 </real>
+
+	</resource>
+	<resource type="CapsuleShape2D" path="local://2">
+		<real name="custom_solver_bias"> 0 </real>
+		<real name="radius"> 10 </real>
+		<real name="height"> 20 </real>
+
+	</resource>
+	<resource type="CapsuleShape2D" path="local://3">
+		<real name="custom_solver_bias"> 0 </real>
+		<real name="radius"> 10 </real>
+		<real name="height"> 20 </real>
+
+	</resource>
+	<resource type="Animation" path="local://10">
+		<string name="resource/name"> "Attack_Down" </string>
+		<real name="length"> 0.7 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="7"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="7"> 				1, 1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="7" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="2">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 7 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://11">
+		<string name="resource/name"> "Attack_Left" </string>
+		<real name="length"> 1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="7"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="7"> 				1, 1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="7" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="3">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 7 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://12">
+		<string name="resource/name"> "Attack_Right" </string>
+		<real name="length"> 1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="7"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="7"> 				1, 1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="7" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="4">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 7 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://9">
+		<string name="resource/name"> "Attack_Up" </string>
+		<real name="length"> 0.7 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="7"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="7"> 				1, 1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="7" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="5">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 7 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://8">
+		<string name="resource/name"> "Idle" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="6">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://16">
+		<string name="resource/name"> "Idle_Down" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="6">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://14">
+		<string name="resource/name"> "Idle_Left" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="1">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://15">
+		<string name="resource/name"> "Idle_Right" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="7">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://13">
+		<string name="resource/name"> "Idle_Up" </string>
+		<real name="length"> 0.1 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 0 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="8">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://4">
+		<string name="resource/name"> "Walk_Down" </string>
+		<real name="length"> 0.6 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="6">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://5">
+		<string name="resource/name"> "Walk_Left" </string>
+		<real name="length"> 0.6 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 21 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="1">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://6">
+		<string name="resource/name"> "Walk_Right" </string>
+		<real name="length"> 0.6 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 0 </int>
+				<int> 1 </int>
+				<int> 2 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="7">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://7">
+		<string name="resource/name"> "Walk_Up" </string>
+		<real name="length"> 0.6 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> "Player Sprite:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<bool name="tracks/0/imported"> False </bool>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="6"> 				0, 0.1, 0.2, 0.3, 0.4, 0.5 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="6"> 				1, 1, 1, 1, 1, 1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="6" shared="false">
+				<int> 8 </int>
+				<int> 1 </int>
+				<int> 3 </int>
+				<int> 4 </int>
+				<int> 5 </int>
+				<int> 6 </int>
+			</array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Player Sprite:texture" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<bool name="tracks/1/imported"> False </bool>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<resource  external="8">  </resource>
+			</array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Player Sprite:hframes" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<bool name="tracks/2/imported"> False </bool>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "update" </string>
+			<int> 1 </int>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 6 </int>
+			</array>
+		</dictionary>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "conn_count" </string>
+			<int> 2 </int>
+			<string> "conns" </string>
+			<int_array  len="12"> 				9, 0, 79, 78, 2, 0, 10, 0, 79, 80, 2, 0 </int_array>
+			<string> "editable_instances" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "names" </string>
+			<string_array  len="81">
+				<string> "Player" </string>
+				<string> "transform/pos" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "collision/margin" </string>
+				<string> "script/script" </string>
+				<string> "HideWalls" </string>
+				<string> "KinematicBody2D" </string>
+				<string> "Player Sprite" </string>
+				<string> "z/z" </string>
+				<string> "texture" </string>
+				<string> "hframes" </string>
+				<string> "region_rect" </string>
+				<string> "Sprite" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "shape" </string>
+				<string> "trigger" </string>
+				<string> "_update_shape_index" </string>
+				<string> "Damage Area" </string>
+				<string> "gravity_vec" </string>
+				<string> "gravity" </string>
+				<string> "linear_damp" </string>
+				<string> "angular_damp" </string>
+				<string> "Player Damage Area" </string>
+				<string> "Area2D" </string>
+				<string> "Camera2D" </string>
+				<string> "anchor_mode" </string>
+				<string> "rotating" </string>
+				<string> "current" </string>
+				<string> "zoom" </string>
+				<string> "limit/left" </string>
+				<string> "limit/top" </string>
+				<string> "limit/right" </string>
+				<string> "limit/bottom" </string>
+				<string> "drag_margin/h_enabled" </string>
+				<string> "drag_margin/v_enabled" </string>
+				<string> "smoothing/enable" </string>
+				<string> "smoothing/speed" </string>
+				<string> "drag_margin/left" </string>
+				<string> "drag_margin/top" </string>
+				<string> "drag_margin/right" </string>
+				<string> "drag_margin/bottom" </string>
+				<string> "AttackAxis" </string>
+				<string> "Position2D" </string>
+				<string> "Punch" </string>
+				<string> "Attack Cooldown" </string>
+				<string> "process_mode" </string>
+				<string> "wait_time" </string>
+				<string> "one_shot" </string>
+				<string> "autostart" </string>
+				<string> "Timer" </string>
+				<string> "Damaged Timer" </string>
+				<string> "Anim" </string>
+				<string> "playback/process_mode" </string>
+				<string> "playback/default_blend_time" </string>
+				<string> "root/root" </string>
+				<string> "anims/Attack_Down" </string>
+				<string> "anims/Attack_Left" </string>
+				<string> "anims/Attack_Right" </string>
+				<string> "anims/Attack_Up" </string>
+				<string> "anims/Idle" </string>
+				<string> "anims/Idle_Down" </string>
+				<string> "anims/Idle_Left" </string>
+				<string> "anims/Idle_Right" </string>
+				<string> "anims/Idle_Up" </string>
+				<string> "anims/Walk_Down" </string>
+				<string> "anims/Walk_Left" </string>
+				<string> "anims/Walk_Right" </string>
+				<string> "anims/Walk_Up" </string>
+				<string> "playback/active" </string>
+				<string> "playback/speed" </string>
+				<string> "blend_times" </string>
+				<string> "autoplay" </string>
+				<string> "AnimationPlayer" </string>
+				<string> "_on_Attack_Cooldown_timeout" </string>
+				<string> "timeout" </string>
+				<string> "_on_Damaged_Timer_timeout" </string>
+			</string_array>
+			<string> "node_count" </string>
+			<int> 12 </int>
+			<string> "node_paths" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="250"> 				-1, -1, 11, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 3, 5, 1, 6, 4, 7, 4, 8, 5, 9, 6, 1, 10, 0, 0, 17, 12, -1, 4, 13, 7, 14, 8, 15, 9, 16, 10, 0, 0, 0, 18, 18, -1, 3, 19, 2, 20, 1, 21, 11, 0, 0, 0, 28, 22, -1, 8, 2, 12, 3, 13, 4, 3, 5, 1, 23, 14, 24, 15, 25, 16, 26, 17, 1, 27, 3, 0, 18, 18, -1, 3, 19, 13, 20, 1, 21, 11, 0, 0, 0, 29, 29, -1, 16, 30, 4, 31, 1, 32, 12, 33, 18, 34, 19, 35, 19, 36, 20, 37, 20, 38, 12, 39, 12, 40, 1, 41, 21, 42, 22, 43, 22, 44, 22, 45, 22, 0, 0, 0, 47, 46, -1, 0, 0, 6, 0, 28, 48, -1, 8, 2, 12, 3, 23, 4, 3, 5, 1, 23, 14, 24, 15, 25, 16, 26, 17, 0, 7, 0, 18, 18, -1, 3, 19, 23, 20, 1, 21, 11, 0, 0, 0, 54, 49, -1, 4, 50, 4, 51, 24, 52, 12, 53, 1, 0, 0, 0, 54, 55, -1, 4, 50, 4, 51, 17, 52, 12, 53, 1, 0, 0, 0, 77, 56, -1, 20, 57, 4, 58, 25, 59, 26, 60, 27, 61, 28, 62, 29, 63, 30, 64, 31, 65, 32, 66, 33, 67, 34, 68, 35, 69, 36, 70, 37, 71, 38, 72, 39, 73, 12, 74, 17, 75, 40, 76, 41, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="42" shared="false">
+				<vector2> -1, 24 </vector2>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://1">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<int> 1 </int>
+				<real> 0.08 </real>
+				<resource  external="0">  </resource>
+				<int> -1 </int>
+				<resource  external="1">  </resource>
+				<int> 6 </int>
+				<rect2> -48, -52, 53, 55 </rect2>
+				<int> 0 </int>
+				<bool> True </bool>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<vector2> 0, 1 </vector2>
+				<real> 98 </real>
+				<real> 0.1 </real>
+				<real> 1 </real>
+				<vector2> 1, 1 </vector2>
+				<int> -1000000 </int>
+				<int> 1000000 </int>
+				<real> 5 </real>
+				<real> 0.05 </real>
+				<resource  resource_type="Shape2D" path="local://3">  </resource>
+				<real> 0.3 </real>
+				<real> 0 </real>
+				<node_path> ".." </node_path>
+				<resource  resource_type="Animation" path="local://10">  </resource>
+				<resource  resource_type="Animation" path="local://11">  </resource>
+				<resource  resource_type="Animation" path="local://12">  </resource>
+				<resource  resource_type="Animation" path="local://9">  </resource>
+				<resource  resource_type="Animation" path="local://8">  </resource>
+				<resource  resource_type="Animation" path="local://16">  </resource>
+				<resource  resource_type="Animation" path="local://14">  </resource>
+				<resource  resource_type="Animation" path="local://15">  </resource>
+				<resource  resource_type="Animation" path="local://13">  </resource>
+				<resource  resource_type="Animation" path="local://4">  </resource>
+				<resource  resource_type="Animation" path="local://5">  </resource>
+				<resource  resource_type="Animation" path="local://6">  </resource>
+				<resource  resource_type="Animation" path="local://7">  </resource>
+				<array  len="0" shared="false">
+				</array>
+				<string> "Idle" </string>
+			</array>
+			<string> "version" </string>
+			<int> 2 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>
