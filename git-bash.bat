@@ -1,0 +1,1 @@
+start C:\Users\Kapu\PortableGit\git-bash.exe

@@ -190,13 +190,13 @@ func _fixed_process(delta):
 		
 		shooting = shootInput
 		
-		if not can_attack and upFacing:
+		if not can_attack and FACING_UP:
 			newAnim = "Attack_Up"
-		if not can_attack and not upFacing:
+		if not can_attack and FACING_DOWN:
 			newAnim = "Attack_Down"
-		if not can_attack and leftFacing:
+		if not can_attack and FACING_LEFT:
 			newAnim = "Attack_Left"
-		if not can_attack and not leftFacing:
+		if not can_attack and FACING_RIGHT:
 			newAnim = "Attack_Right"
 		
 		#Damaged modulate
@@ -204,7 +204,7 @@ func _fixed_process(delta):
 			get_node("Player Sprite").set_modulate(Color(1,1,1, 0.5 + (0.5 * sin(OS.get_ticks_msec() / 10.0))))
 
 		#Animation
-		print("facing: " + facing)
+		print("facing: " + str(facing))
 		
 		if facing == FACING_UP:
 			print("Ylos")

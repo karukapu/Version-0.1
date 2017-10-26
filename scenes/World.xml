@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
-	<ext_resource path="res://scenes/Enemy.xml" type="PackedScene" index="1"></ext_resource>
-	<ext_resource path="res://scenes/Player.xml" type="PackedScene" index="0"></ext_resource>
-	<ext_resource path="res://scenes/Tileset.xml" type="TileSet" index="2"></ext_resource>
+<resource_file type="PackedScene" subresource_count="5" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
+	<ext_resource path="res://scenes/Player.xml" type="PackedScene" index="1"></ext_resource>
+	<ext_resource path="res://scenes/Enemy.xml" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://scenes/Tileset.xml" type="TileSet" index="3"></ext_resource>
+	<ext_resource path="res://scenes/World.gd" type="Script" index="0"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -13,8 +14,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="21">
+			<string_array  len="22">
 				<string> "World" </string>
+				<string> "script/script" </string>
 				<string> "Navigation2D" </string>
 				<string> "Player" </string>
 				<string> "Enemy" </string>
@@ -42,15 +44,16 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="62"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 2147483647, 2, 0, 0, 0, 0, 0, 2147483647, 3, 1, 1, 4, 2, 0, 0, 0, 5, 5, -1, 16, 4, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 4, 13, 10, 14, 11, 15, 12, 16, 13, 17, 14, 18, 14, 19, 14, 20, 15, 0 </int_array>
+			<int_array  len="64"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2147483647, 3, 1, 0, 0, 0, 0, 2147483647, 4, 2, 1, 5, 3, 0, 0, 0, 6, 6, -1, 16, 5, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 5, 14, 11, 15, 12, 16, 13, 17, 14, 18, 15, 19, 15, 20, 15, 21, 16, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="16" shared="false">
+			<array  len="17" shared="false">
 				<resource  external="0">  </resource>
 				<resource  external="1">  </resource>
+				<resource  external="2">  </resource>
 				<vector2> 119.06, 1.61767 </vector2>
 				<vector2> -12.3136, 5.16379 </vector2>
 				<int> 0 </int>
-				<resource  external="2">  </resource>
+				<resource  external="3">  </resource>
 				<vector2> 32, 32 </vector2>
 				<int> 16 </int>
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
