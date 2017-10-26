@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
-	<ext_resource path="res://scenes/Player.xml" type="PackedScene" index="2"></ext_resource>
-	<ext_resource path="res://scenes/Enemy.xml" type="PackedScene" index="3"></ext_resource>
-	<ext_resource path="res://scenes/INVENTORY.xml" type="PackedScene" index="4"></ext_resource>
 	<ext_resource path="res://scenes/Tileset.xml" type="TileSet" index="1"></ext_resource>
 	<ext_resource path="res://scripts/main.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://scenes/Enemy.xml" type="PackedScene" index="3"></ext_resource>
+	<ext_resource path="res://scenes/Player.xml" type="PackedScene" index="2"></ext_resource>
+	<ext_resource path="res://scenes/INVENTORY.xml" type="PackedScene" index="4"></ext_resource>
 	<resource type="GDScript" path="local://2">
 		<string name="script/source"> "#extends Navigation2D&#000a;#&#000a;#var hiddenWalls = []&#000a;#var checkCells = [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0)]&#000a;#&#000a;#var objectsNode&#000a;#&#000a;#&#000a;#func _ready():&#000a;#&#0009;set_process(true)&#000a;#&#0009;objectsNode = get_node(&quot;Objects&quot;)&#000a;#&#000a;#&#000a;#func _process(delta):&#000a;#&#0009;#Hide walls&#000a;#&#0009;var newHiddenWalls = []&#000a;#&#0009;var objects = get_tree().get_nodes_in_group(&quot;HideWalls&quot;)&#000a;#&#0009;for i in range(objects.size()):&#000a;#&#0009;&#0009;var obj = objects[i]&#000a;#&#0009;&#0009;var pos = Vector2()&#000a;#&#0009;&#0009;for i in range(3):&#000a;#&#0009;&#0009;&#0009;pos = objectsNode.world_to_map(obj.get_pos() + obj.get_node(&quot;GroundOffset&quot;).get_pos()) + checkCells[i]&#000a;#&#0009;&#0009;&#0009;if objectsNode.get_cell(pos.x, pos.y) == 1 or objectsNode.get_cell(pos.x, pos.y) == 2:&#000a;#&#0009;&#0009;&#0009;&#0009;if newHiddenWalls.find(pos) == -1:&#000a;#&#0009;&#0009;&#0009;&#0009;&#0009;newHiddenWalls.append(pos)&#000a;#&#0009;&#0009;&#0009;&#0009;&#0009;objectsNode.set_cell(pos.x, pos.y, 2)&#000a;#&#0009;&#0009;&#0009;&#0009;&#000a;#&#0009;&#0009;&#0009;&#0009;if hiddenWalls.find(pos) != -1:&#000a;#&#0009;&#0009;&#0009;&#0009;&#0009;hiddenWalls.erase(pos)&#000a;#&#0009;&#000a;#&#0009;for i in range(hiddenWalls.size()):&#000a;#&#0009;&#0009;var pos = hiddenWalls[i]&#000a;#&#0009;&#0009;objectsNode.set_cell(pos.x, pos.y, 1)&#000a;#&#0009;&#000a;#&#0009;hiddenWalls = newHiddenWalls&#000a;&#000a;&#000a;&#000a;" </string>
 
