@@ -82,12 +82,12 @@ func _ready():
 
 # laurin debug print {
 var _custom_debug_calls = 0
-func _custom_debug_print(anim, newAnim):
+func _custom_debug_print():
 	_custom_debug_calls += 1
-	print("custom debug called: ..", _custom_debug_calls, "times")
-	print("old anim name: ........", anim)
-	print("new anim name: ........", newAnim)
-	print("player facing enum:....", facing)
+	print("custom debug called: .. ", _custom_debug_calls, " ", "times")
+	print("old anim name: ........ ", anim)
+	print("new anim name: ........ ", newAnim)
+	print("player facing enum:.... ", facing)
 	print("-")
 # }
 
@@ -249,7 +249,7 @@ func _fixed_process(delta):
 		
 		if newAnim != anim:
 			# this block is run if animation was updated.
-			_custom_debug_print(anim, newAnim)
+			_custom_debug_print()
 			anim = newAnim
 			animNode.play(anim)
 
