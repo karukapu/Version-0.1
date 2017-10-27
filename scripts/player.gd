@@ -39,6 +39,7 @@ var health = 10
 var is_hurt = false
 
 
+
 func take_damage(amnt=1):
 	if health > 0 and not is_hurt:
 		health = clamp(health - amnt, 0, maxHealth)
@@ -78,6 +79,17 @@ func do_attack():
 
 func _ready():
 	set_fixed_process(true)
+
+# laurin debug print {
+var _custom_debug_calls = 0
+func _custom_debug_print(anim, newAnim):
+	_custom_debug_calls += 1
+	print("custom debug called: ..", _custom_debug_calls, "times")
+	print("old anim name: ........", anim)
+	print("new anim name: ........", newAnim)
+	print("player facing enum:....", facing)
+	print("-")
+# }
 
 
 func _fixed_process(delta):
@@ -204,22 +216,22 @@ func _fixed_process(delta):
 			get_node("Player Sprite").set_modulate(Color(1,1,1, 0.5 + (0.5 * sin(OS.get_ticks_msec() / 10.0))))
 
 		#Animation
-		print("facing: " + str(facing))
+		# remove this line: #print("facing: " + str(facing))
 		
 		if facing == FACING_UP:
-			print("Ylos")
+			#print("Ylos")
 			newAnim = "Idle_Up"
 			
 		if facing == FACING_DOWN:
-			print("Alas")
+			#print("Alas")
 			newAnim = "Idle_Down"
 			
 		if facing == FACING_LEFT:
-			print("Vasen")
+			#print("Vasen")
 			newAnim = "Idle_Left"
 		
 		if facing == FACING_RIGHT:
-			print("Oikee")
+			#print("Oikee")
 			newAnim = "Idle_Right"
 		
 		
@@ -236,6 +248,8 @@ func _fixed_process(delta):
 			newAnim = "Walk_Right"
 		
 		if newAnim != anim:
+			# this block is run if animation was updated.
+			_custom_debug_print(anim, newAnim)
 			anim = newAnim
 			animNode.play(anim)
 
