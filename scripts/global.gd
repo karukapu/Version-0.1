@@ -17,6 +17,6 @@ func get_keys():
 
 
 func _ready():
-	OS.set_window_size(OS.get_window_size() * 2)
-
-
+	return
+	get_node("Camera2D").set_zoom(Vector2(2,2))
+#	OS.set_window_size(OS.get_window_size() * 2)

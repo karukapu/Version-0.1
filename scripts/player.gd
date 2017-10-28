@@ -6,8 +6,27 @@ var bulletScene = preload("res://scenes/bullet.xml")
 const STATE_PLAYING = 1
 const STATE_DEAD = 2
 const STATE_WIN = 4
+const STATE_INIT = 99
+var state = 99
 
-var state = 1
+# godot is broken?
+# no but you cannot assing to dictionary in scripts global scope, IT SEEMS
+var xorbox = {}
+# input_last
+#xorbox.moveUp = 0
+#xorbox["moveDown"] = 0
+#xorbox["moveLeft"] = 0
+#xorbox["moveRight"] = 0
+#xorbox["attackInput"] = 0
+#xorbox["shootInput"] = 0
+#
+var input_new = {}
+#input_new["moveUp"] = 0
+#input_new["moveDown"] = 0
+#input_new["moveLeft"] = 0
+#input_new["moveRight"] = 0
+#input_new["attackInput"] = 0
+#input_new["shootInput"] = 0
 
 var movement = Vector2()
 var velocity = Vector2()
@@ -83,29 +102,84 @@ func _custom_debug_print_multiline():
 	print("-")
 
 func _custom_debug_print_oneline():
+	return
 	_custom_debug_calls += 1
 	var formatstring = "p - calls: %s oanim: %s nanim: %s facingnum: %s -"
 	var toprint = formatstring % [_custom_debug_calls, anim, newAnim, facing]
 	print(toprint)
+
+func _custom_debug_input_state_print(inputarr):
+	var has_input = false
+	var index = 0
+	var foo
+	while (index < inputarr.size()):
+		foo = inputarr[index]
+		if foo == true:
+			has_input = true
+			inputarr[index] = 1
+		else:
+			inputarr[index] = 0
+		index += 1
+	var formatstring = "i - u %s l %s d %s r %s a %s s %s -"
+	var toprint = formatstring % inputarr
+	if has_input: print(toprint)
 # }
 
-
 func _fixed_process(delta):
+	# test hack to get dictionary working
+	if state == STATE_INIT:
+		# xorbox is definet in start of this file
+		xorbox["moveUp"] = 0
+		xorbox["moveDown"] = 0
+		xorbox["moveLeft"] = 0
+		xorbox["moveRight"] = 0
+		xorbox["attackInput"] = 0
+		xorbox["shootInput"] = 0
+
+		input_new["moveUp"] = null
+		input_new["moveDown"] = null
+		input_new["moveLeft"] = null
+		input_new["moveRight"] = null
+		input_new["attackInput"] = null
+		input_new["shootInput"] = null
+		state = STATE_PLAYING
+
 	if state != STATE_PLAYING:
 		return false
-		
+
 	# from now on state is STATE_PLAYING
 	var newAnim = ""
 		
-	var moveUp = Input.is_action_pressed("ui_up")
-	var moveDown = Input.is_action_pressed("ui_down")
-	var moveLeft = Input.is_action_pressed("ui_left")
-	var moveRight = Input.is_action_pressed("ui_right")
+	# get input state: {
+	# save last state
+	for key in xorbox:
+		xorbox[key] = input_new[key]
 
-	var attackInput = Input.is_action_pressed("ATTACK")
-	var shootInput = Input.is_action_pressed("ATTACK2")
+	# read new state
+	input_new["moveUp"] = Input.is_action_pressed("ui_up")
+	input_new["moveDown"] = Input.is_action_pressed("ui_down")
+	input_new["moveLeft"] = Input.is_action_pressed("ui_left")
+	input_new["moveRight"] = Input.is_action_pressed("ui_right")
+	input_new["attackInput"] = Input.is_action_pressed("ATTACK")
+	input_new["shootInput"] = Input.is_action_pressed("ATTACK2")
+
+	# resolve state diff:
+	var state_diff = false
+	for key in xorbox:
+		if xorbox[key] != input_new[key]:
+			state_diff = true
+
+	# legacy names support hack:
+	var moveUp = input_new['moveUp']
+	var moveDown = input_new['moveDown']
+	var moveLeft = input_new['moveLeft']
+	var moveRight = input_new['moveRight']
+	var attackInput = input_new['attackInput']
+	var shootInput = input_new['shootInput']
 
 	var moving = moveUp or moveDown or moveLeft or moveRight
+	if state_diff: _custom_debug_input_state_print([moveUp, moveLeft, moveDown, moveRight, attackInput, shootInput])
+	# }
 
 	#Movement X
 	if moveLeft:
@@ -153,13 +227,13 @@ func _fixed_process(delta):
 			var normal = get_collision_normal()
 			motion = normal.slide(motion)
 			motion = move(motion)
-	
+
 	##Facing direction
 	#if leftFacing and velocity.x < 0:
 	#	set_scale(Vector2(-1, 1))
 	#elif not leftFacing and velocity.x > 0:
 	#	set_scale(Vector2(1, 1))
-	
+
 	#Rotation
 	if moving:
 		direction = moveDir
@@ -173,7 +247,7 @@ func _fixed_process(delta):
 		
 		#get_node("GroundOffset/Arrow").set_rot(ang)
 		get_node("AttackAxis").set_rot(ang)
-	
+
 	#Attacking
 	if can_attack and attackInput and not attacking:
 		can_attack = false
@@ -199,14 +273,11 @@ func _fixed_process(delta):
 
 	shooting = shootInput
 
-	if not can_attack and FACING_UP:
-		newAnim = "Attack_Up"
-	if not can_attack and FACING_DOWN:
-		newAnim = "Attack_Down"
-	if not can_attack and FACING_LEFT:
-		newAnim = "Attack_Left"
-	if not can_attack and FACING_RIGHT:
-		newAnim = "Attack_Right"
+	if not can_attack:
+		if facing == FACING_UP: newAnim = "Attack_Up"
+		if facing == FACING_DOWN: newAnim = "Attack_Down"
+		if facing == FACING_LEFT: newAnim = "Attack_Left"
+		if facing == FACING_RIGHT: newAnim = "Attack_Right"
 
 	#Damaged modulate
 	if is_hurt:
@@ -233,17 +304,17 @@ func _fixed_process(delta):
 
 	if moveUp:
 		newAnim = "Walk_Up"
-		
+	
 	if moveDown:
 		newAnim = "Walk_Down"
-		
+	
 	if moveLeft:
 		newAnim = "Walk_Left"
-		
+	
 	if moveRight:
 		newAnim = "Walk_Right"
-	
-	if newAnim != anim:
+
+	if newAnim != anim and state_diff:
 		# this block is run if animation was updated.
 		_custom_debug_print_oneline()
 		anim = newAnim
