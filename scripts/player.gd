@@ -120,7 +120,7 @@ func _custom_debug_input_state_print(inputarr):
 		else:
 			inputarr[index] = 0
 		index += 1
-	var formatstring = "i - u %s l %s d %s r %s a %s s %s -"
+	var formatstring = "ebin - u %s l %s d %s r %s a %s s %s -"
 	var toprint = formatstring % inputarr
 	if has_input: print(toprint)
 # }
@@ -304,14 +304,11 @@ func _fixed_process(delta):
 
 	if moveUp:
 		newAnim = "Walk_Up"
-	
-	if moveDown:
+	elif moveDown:
 		newAnim = "Walk_Down"
-	
-	if moveLeft:
+	elif moveLeft:
 		newAnim = "Walk_Left"
-	
-	if moveRight:
+	elif moveRight:
 		newAnim = "Walk_Right"
 
 	if newAnim != anim and state_diff:
