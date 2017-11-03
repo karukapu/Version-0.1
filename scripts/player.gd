@@ -9,16 +9,18 @@ const STATE_WIN = 4
 const STATE_INIT = 99
 var state = 99
 
+# input 'object' sketch:
+const input_dict_keys = ["moveUp", "moveDown", "moveLeft", "moveRight", "attackInput", "shootInput"]
 # godot is broken?
 # no but you cannot assing to dictionary in scripts global scope, IT SEEMS
-var xorbox = {}
-# input_last
-#xorbox.moveUp = 0
-#xorbox["moveDown"] = 0
-#xorbox["moveLeft"] = 0
-#xorbox["moveRight"] = 0
-#xorbox["attackInput"] = 0
-#xorbox["shootInput"] = 0
+var input_old = {}
+# input_old
+#input_old.moveUp = 0
+#input_old["moveDown"] = 0
+#input_old["moveLeft"] = 0
+#input_old["moveRight"] = 0
+#input_old["attackInput"] = 0
+#input_old["shootInput"] = 0
 #
 var input_new = {}
 #input_new["moveUp"] = 0
@@ -123,25 +125,26 @@ func _custom_debug_input_state_print(inputarr):
 	var formatstring = "ebin - u %s l %s d %s r %s a %s s %s -"
 	var toprint = formatstring % inputarr
 	if has_input: print(toprint)
+
+func _custom_debug_input_state_print_dict(input_dict):
+	var has_input = false
+	var toprint = "input change:"
+	for key in input_dict.keys():
+		if input_dict[key] == true:
+			has_input = true
+			toprint = toprint + " " + key
+	if has_input: print(toprint)
 # }
 
 func _fixed_process(delta):
 	# test hack to get dictionary working
+        # you cant define dictionary mappings in global scope of script
 	if state == STATE_INIT:
-		# xorbox is definet in start of this file
-		xorbox["moveUp"] = 0
-		xorbox["moveDown"] = 0
-		xorbox["moveLeft"] = 0
-		xorbox["moveRight"] = 0
-		xorbox["attackInput"] = 0
-		xorbox["shootInput"] = 0
-
-		input_new["moveUp"] = null
-		input_new["moveDown"] = null
-		input_new["moveLeft"] = null
-		input_new["moveRight"] = null
-		input_new["attackInput"] = null
-		input_new["shootInput"] = null
+		# this block initializes the player input state dictionaries
+		# input_old is definet in start of this file, it is global so it survives after each run of this script
+		for name in input_dict_keys:
+			input_old[name] = null
+			input_new[name] = null
 		state = STATE_PLAYING
 
 	if state != STATE_PLAYING:
@@ -152,8 +155,8 @@ func _fixed_process(delta):
 		
 	# get input state: {
 	# save last state
-	for key in xorbox:
-		xorbox[key] = input_new[key]
+	for key in input_old.keys():
+		input_old[key] = input_new[key]
 
 	# read new state
 	input_new["moveUp"] = Input.is_action_pressed("ui_up")
@@ -164,9 +167,10 @@ func _fixed_process(delta):
 	input_new["shootInput"] = Input.is_action_pressed("ATTACK2")
 
 	# resolve state diff:
+	# why do we need this? atleast in state-printing
 	var state_diff = false
-	for key in xorbox:
-		if xorbox[key] != input_new[key]:
+	for key in input_old:
+		if input_old[key] != input_new[key]:
 			state_diff = true
 
 	# legacy names support hack:
@@ -178,7 +182,7 @@ func _fixed_process(delta):
 	var shootInput = input_new['shootInput']
 
 	var moving = moveUp or moveDown or moveLeft or moveRight
-	if state_diff: _custom_debug_input_state_print([moveUp, moveLeft, moveDown, moveRight, attackInput, shootInput])
+	if state_diff: _custom_debug_input_state_print_dict(input_new)
 	# }
 
 	#Movement X
